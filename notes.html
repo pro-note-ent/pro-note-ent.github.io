@@ -2,15 +2,71 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Renseignements personnels</title>
+<title>Notes</title>
 </head>
+<style>
+body {
+font-family: Arial, sans-serif;
+background-color: #f4f6fb;
+margin: 0;
+}
+
+nav {
+background-color: #3f51b5;
+padding: 15px;
+}
+
+nav a {
+color: white;
+margin-right: 15px;
+text-decoration: none;
+font-weight: bold;
+}
+
+nav a:hover {
+text-decoration: underline;
+}
+
+h1 {
+color: #3f51b5;
+margin-left: 15px;
+}
+
+.content {
+padding: 20px;
+}
+</style>
 <body>
+<nav>
+<a href="dashboard.html">Accueil</a>
+<a href="profil.html">Renseignements</a>
+<a href="notes.html">Notes</a>
+<a href="absences.html">Absences</a>
+<a href="index.html">Déconnexion</a>
+</nav>
+<div class="content">
+<!-- ton contenu ici -->
+</div>
 
-<h1>Renseignements personnels</h1>
+<h1>Mes notes</h1>
 
-<p><strong>Nom :</strong> Lehna</p>
-<p><strong>Classe :</strong> À compléter</p>
-<p><strong>Année :</strong> 2025 - 2026</p>
+<table border="1">
+<tr>
+<th>Matière</th>
+<th>Note</th>
+<th>Coefficient</th>
+</tr>
+<tr>
+<td>Maths</td>
+<td>15 / 20</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Français</td>
+<td>13 / 20</td>
+<td>2</td>
+</tr>
+</table>
 
 <br>
 <a href="dashboard.html">⬅ Retour au menu</a>
