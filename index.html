@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Pro Note ENT</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -11,46 +10,15 @@
 <h1>Bienvenue sur mon portail</h1>
 <p>Accédez à votre espace personnel</p>
 
-<form onsubmit="login(); return false;">
+<form>
 <label>Email :</label><br>
-<input type="email" id="email" required><br><br>
+<input type="email"><br><br>
 
 <label>Mot de passe :</label><br>
-<input type="password" id="password" required><br><br>
+<input type="password"><br><br>
 
-<button type="submit">Se connecter</button>
+<button>Se connecter</button>
 </form>
-
-<!-- FIREBASE -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
-
-const firebaseConfig = {
-apiKey: "AIzaSyDVelcrr4qvP7IIIdOSTdWQGrxH_k11dd0",
-authDomain: "pro-note-ent.firebaseapp.com",
-projectId: "pro-note-ent",
-storageBucket: "pro-note-ent.appspot.com",
-messagingSenderId: "15863442214",
-appId: "1:15863442214:web:d8053c568399fc06a1efe7"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
-window.login = function () {
-const email = document.getElementById("email").value;
-const password = document.getElementById("password").value;
-
-signInWithEmailAndPassword(auth, email, password)
-.then(() => {
-alert("✅ Connexion réussie");
-})
-.catch((error) => {
-alert("❌ Erreur : " + error.message);
-});
-};
-</script>
 
 </body>
 </html>
