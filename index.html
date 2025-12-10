@@ -43,7 +43,7 @@ const password = document.getElementById("password").value;
 
 signInWithEmailAndPassword(auth, email, password)
 .then(() => {
-alert("✅ Connexion réussie");
+  window.location.href = "dashboard.html";
 })
 .catch((error) => {
 alert("❌ Erreur : " + error.message);
