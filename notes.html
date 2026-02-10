@@ -2,165 +2,71 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Notes</title>
-</head>
+<title>Mes notes</title>
 <style>
 body {
-font-family: Arial, sans-serif;
-background-color: #f4f6fb;
-margin: 0;
+background-color: #e6f7e6;
+font-family: Arial;
 }
-
-nav {
-background-color: #3f51b5;
-padding: 15px;
-}
-
-nav a {
-color: white;
-margin-right: 15px;
-text-decoration: none;
-font-weight: bold;
-}
-
-nav a:hover {
-text-decoration: underline;
-}
-
 h1 {
-color: #3f51b5;
-margin-left: 15px;
+color: #1e7f43;
 }
-
-.content {
-padding: 20px;
+table {
+width: 100%;
+border-collapse: collapse;
+}
+th, td {
+border: 1px solid #1e7f43;
+padding: 8px;
+text-align: center;
+}
+th {
+background-color: #1e7f43;
+color: white;
 }
 </style>
+</head>
+
 <body>
-<nav>
-<a href="dashboard.html">Accueil</a>
-<a href="profil.html">Renseignements</a>
-<a href="notes.html">Notes</a>
-<a href="absences.html">Absences</a>
-<a href="index.html">Déconnexion</a>
-</nav>
-<div class="content">
-<!-- ton contenu ici -->
-</div>
-
-<h1>Mes notes</h1>
-
-<table border="1" cellpadding="8">
+<h1>📘 Mes notes</h1>
+<table>
+<thead>
 <tr>
 <th>Matière</th>
-<th>Note</th>
-<th>Coefficient</th>
+<th>Moyenne</th>
 </tr>
-
-<!-- Anglais -->
-<tr>
-<td>Anglais</td>
-<td>9 / 20</td>
-<td>1</td>
-</tr>
-
-<!-- Droit Économie -->
-<tr>
-<td>Droit / Économie</td>
-<td>14 / 20</td>
-<td>2</td>
-</tr>
-<tr>
-<td>Droit / Économie</td>
-<td>6,5 / 10</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Droit / Économie</td>
-<td>18 / 20</td>
-<td>1</td>
-</tr>
-
-<!-- EPS -->
-<tr>
-<td>EPS (Sport)</td>
-<td>Dispensée</td>
-<td>—</td>
-</tr>
-
-<!-- Espagnol -->
-<tr>
-<td>Espagnol</td>
-<td>10 / 20</td>
-<td>2</td>
-</tr>
-<tr>
-<td>Espagnol</td>
-<td>11 / 20</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Espagnol</td>
-<td>10 / 20</td>
-<td>2</td>
-</tr>
-
-<!-- Histoire -->
-<tr>
-<td>Histoire</td>
-<td>9 / 20</td>
-<td>2</td>
-</tr>
-<tr>
-<td>Histoire</td>
-<td>7,5 / 10</td>
-<td>1</td>
-</tr>
-
-<!-- Management -->
-<tr>
-<td>Management</td>
-<td>11 / 20</td>
-<td>2</td>
-</tr>
-<tr>
-<td>Management</td>
-<td>10 / 20</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Management</td>
-<td>10 / 20</td>
-<td>1</td>
-</tr>
-
-<!-- Mathématiques -->
-<tr>
-<td>Mathématiques</td>
-<td>10 / 20</td>
-<td>2</td>
-</tr>
-<tr>
-<td>Mathématiques</td>
-<td>15 / 20</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Mathématiques</td>
-<td>10,5 / 10</td>
-<td>1</td>
-</tr>
-
-<!-- Philosophie -->
-<tr>
-<td>Philosophie</td>
-<td>7 / 20</td>
-<td>1</td>
-</tr>
+</thead>
+<tbody id="notes"></tbody>
 </table>
 
-<br>
-<a href="dashboard.html">⬅ Retour au menu</a>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
+const firebaseConfig = {
+// 🔴 ICI tu colles EXACTEMENT la config Firebase
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const notesTable = document.getElementById("notes");
+
+const querySnapshot = await getDocs(
+collection(db, "annees", "2025-2026", "matieres")
+);
+
+querySnapshot.forEach((doc) => {
+const data = doc.data();
+notesTable.innerHTML += `
+<tr>
+<td>${data.nom}</td>
+<td>${data.moyenne}</td>
+</tr>
+`;
+});
+</script>
 </body>
 </html>
+
+
